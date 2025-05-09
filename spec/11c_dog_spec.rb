@@ -20,6 +20,7 @@ describe Dog do
   # that file's first test in the below 'include_examples' line.
   context 'when Dog is a child class of Pet' do
     include_examples 'base class method name'
+    include_examples 'shared method name'
   end
 
   context 'when dog has name and color, but no breed' do
