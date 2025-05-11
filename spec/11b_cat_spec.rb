@@ -20,7 +20,6 @@ describe Cat do
   # that file's first test in the below 'include_examples' line.
   context 'when Cat is a child class of Pet' do
     include_examples 'base class method name'
-    include_examples 'shared method name'
   end
 
   context 'when cat has name and breed, but no color' do
@@ -36,17 +35,25 @@ end
 
 describe Cat do
   # Create a subject with your choice of cat name and optional breed/color.
+  subject(:nello) { described_class.new(name: 'Nello', breed: 'Meticcio', color: nil) }
 
   # Write a test using the second shared_example to test that cat responds to
   # talk ('meow').
-  context '' do
+  context 'when the same method is used in both classes' do
+    include_examples 'shared method name'
   end
 
   # remove the 'x' before running this test
-  xit 'is not hungry' do
+  context 'when it is dinner time' do
+    it 'is not hungry' do
+      expect(nello).not_to be_hungry
+    end
   end
 
   # remove the 'x' before running this test
-  xit 'is hiding' do
+  context 'when I am looking for it' do
+    it 'is hiding' do
+      expect(nello).to be_hiding
+    end
   end
 end
