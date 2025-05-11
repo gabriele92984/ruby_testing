@@ -24,7 +24,7 @@ require_relative '../lib/12_magic_seven'
 # repetition is necessary in order for them to be easy to read. If you are using
 # rubocop, you can disable specific (or all) cops for certain files (or
 # directories) by adding a .rubocop.yml file.
-# https://docs.rubocop.org/rubocop/0.88/configuration.html#includingexcluding-files
+# https://docs.rubocop.org/rubocop/configuration.html#includingexcluding-files
 
 # When you start working on an existing code base, you will often become familiar
 # with the code by reading the tests.
