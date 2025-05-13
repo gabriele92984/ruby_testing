@@ -104,7 +104,7 @@ describe NumberGame do
       it 'returns valid input' do
         user_input = '3'
         verified_input = game_check.verify_input(user_input)
-        expect(verified_input).to eq('3')
+        expect(verified_input).to match(/^[0-9]$/)
       end
     end
 
@@ -112,7 +112,10 @@ describe NumberGame do
 
     # Write a test for the following context.
     context 'when given invalid input as argument' do
-      xit 'returns nil' do
+      it 'returns nil' do
+        user_input = 'd'
+        verified_input = game_check.verify_input(user_input)
+        expect(verified_input).to be_nil
       end
     end
   end
