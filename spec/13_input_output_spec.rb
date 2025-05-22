@@ -189,7 +189,7 @@ describe NumberGame do
     end
   end
 
-  # It is unneccessary to write tests for methods that only contain puts
+  # It is unnecessary to write tests for methods that only contain puts
   # statements, like #final_message. Puts is a basic part of the standard
   # ruby library & is already well tested. Plus, most 'real world
   # applications' don't even output like this except to loggers.
@@ -215,10 +215,11 @@ describe NumberGame do
     # Create a new instance of NumberGame, with specific values for @solution,
     # @guess, and @count
     context 'when count is 2-3' do
+      subject(:game_two) { described_class.new(9, '9', 3) }
       # remove the 'x' before running this test
       xit 'outputs correct phrase' do
         congrats_phrase = "Congratulations! You picked the random number in 3 guesses!\n"
-        expect { game.final_message }.to output(congrats_phrase).to_stdout
+        expect { game_two.final_message }.to output(congrats_phrase).to_stdout
       end
     end
 
