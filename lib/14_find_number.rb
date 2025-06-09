@@ -12,7 +12,7 @@ class FindNumber
     @guess = guess
   end
 
-  def make_guess(min = 0, max = 9)
+  def make_guess(min, max)
     (min + max) / 2
   end
 end

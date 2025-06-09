@@ -125,7 +125,7 @@ describe FindNumber do
     context 'when min is 0 and max is 9' do
       it 'returns 4' do
         allow(random_number).to receive(:value).and_return(8)
-        guess = game_guessing.make_guess
+        guess = game_guessing.make_guess(0, 9)
         expect(guess).to eq(4)
       end
     end
@@ -139,7 +139,12 @@ describe FindNumber do
     # random number double created inside this method's describe block.
 
     context 'when min is 5 and max is 9' do
-      xit 'returns 7' do
+      subject(:game_guessing) { described_class.new(0, 9, random_number) }
+
+      it 'returns 7' do
+        allow(random_number).to receive(:value).and_return(7)
+        guess = game_guessing.make_guess(5, 9)
+        expect(guess).to eq(7)
       end
     end
 
