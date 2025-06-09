@@ -114,8 +114,8 @@ describe FindNumber do
     # Create a random_number double called 'number_guessing'. Allow the double
     # to receive 'value' and return the value of 8, in one of the two ways
     # explained above.
-
-    subject(:game_guessing) { described_class.new(0, 9, number_guessing) }
+    let(:random_number) { double('number_guessing') }
+    subject(:game_guessing) { described_class.new(0, 9, random_number) }
 
     # Before you write the #make_guess method:
     # Write a test that would expect #make_guess to return the average of
@@ -123,7 +123,10 @@ describe FindNumber do
     # It will fail with an undefined method error because you haven't
     # written #make_guess yet!
     context 'when min is 0 and max is 9' do
-      xit 'returns 4' do
+      it 'returns 4' do
+        allow(random_number).to receive(:value).and_return(8)
+        guess = game_guessing.make_guess
+        expect(guess).to eq(4)
       end
     end
 
