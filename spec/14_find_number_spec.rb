@@ -185,14 +185,14 @@ describe FindNumber do
       # Create another subject and random_number double with meaningful names.
       # The subject will need to specify the number value of @guess.
       let(:number_end) { double('random_number') }
-      subject(:game_end) { described_class.new(0, 9, number_guessing, 9) }
+      subject(:game_end) { described_class.new(0, 9, number_end, 9) }
 
       # Allow the double to receive 'value' and return the same number as @guess.
 
       # Write a test that would expect game to be_game_over when a guess equals
       # the random_number double's value above. Remember that this test will not
       # be able to pass yet because you haven't written the method!
-      xit 'is game over' do
+      it 'is game over' do
         allow(number_end).to receive(:value).and_return(9)
         expect(game_end).to be_game_over
       end
