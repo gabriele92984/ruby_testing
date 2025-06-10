@@ -205,7 +205,12 @@ describe FindNumber do
     # NOT equal the random_number double's value above.
 
     context 'when guess and random_number are not equal' do
-      xit 'is not game over' do
+      let(:number_end) { double('random_number') }
+      subject(:game_end) { described_class.new(0, 9, number_end, 9) }
+
+      it 'is not game over' do
+        allow(number_end).to receive(:value).and_return(4)
+        expect(game_end).not_to be_game_over
       end
     end
   end
