@@ -147,7 +147,7 @@ describe BinaryGame do
     context 'when user inputs two incorrect values, then a valid input' do
 
       before do
-        letter = 'A'
+        letter = 'a'
         string = 'Nello'
         valid_input = '9'
         allow(game_input).to receive(:gets).and_return(letter, string, valid_input)
@@ -172,14 +172,25 @@ describe BinaryGame do
     # Query Method -> Test the return value
 
     # NOTE: #verify_input will only return a number if it is between?(min, max)
+    subject(:game_input) { described_class.new(1, 100) }
 
     context 'when given a valid input as argument' do
-      xit 'returns valid input' do
+      it 'returns valid input' do
+        min = game_input.instance_variable_get(:@minimum)
+        max = game_input.instance_variable_get(:@maximum)
+        user_input = 34
+        verified_input = game_input.verify_input(min, max, user_input)
+        expect(verified_input).to be_between(min, max).inclusive
       end
     end
 
     context 'when given invalid input as argument' do
-      xit 'returns nil' do
+      it 'returns nil' do
+        min = game_input.instance_variable_get(:@minimum)
+        max = game_input.instance_variable_get(:@maximum)
+        user_input = 1234
+        verified_input = game_input.verify_input(min, max, user_input)
+        expect(verified_input).to be_nil
       end
     end
   end
