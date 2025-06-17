@@ -366,21 +366,31 @@ describe BinaryGame do
     #  by calling #display_guess.
 
     # Create a new subject and an instance_double for BinarySearch.
+    subject(:game_turn) { described_class.new(1, 100) }
+    let(:binary_search_turn) { instance_double(BinarySearch) }
 
     before do
       # You'll need to create a few method stubs.
+      allow(binary_search_turn).to receive(:make_guess)
+      allow(binary_search_turn).to receive(:update_range)
+      allow(game_turn).to receive(:display_guess)
     end
 
     # Command Method -> Test the change in the observable state
-    xit 'increases guess_count by one' do
+    it 'increases guess_count by one' do
+      expect { game_turn.display_turn_order(binary_search_turn) }.to change { game_turn.instance_variable_get(:@guess_count) }.by(1)
     end
 
     # Method with Outgoing Command -> Test that a message is sent
-    xit 'sends make_guess' do
+    it 'sends make_guess' do
+      expect(binary_search_turn).to receive(:make_guess).once
+      game_turn.display_turn_order(binary_search_turn)
     end
 
     # Method with Outgoing Command -> Test that a message is sent
-    xit 'sends update_range' do
+    it 'sends update_range' do
+      expect(binary_search_turn).to receive(:update_range).once
+      game_turn.display_turn_order(binary_search_turn)
     end
 
     # Using method expectations can be confusing. Stubbing the methods above
