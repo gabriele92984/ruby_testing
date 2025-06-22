@@ -104,6 +104,7 @@ describe CaesarBreaker do
     context 'when the directory exists' do
       before do
         allow(Dir).to receive(:exist?).and_return(true)
+        allow(Dir).to receive(:mkdir)
         allow(File).to receive(:open)
         allow(phrase).to receive(:display_file_location)
       end
